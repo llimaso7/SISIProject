@@ -1,9 +1,17 @@
 import re
 import random
 
-def greeting():
-	#greeting pattern
-	return "Hello world"
+def greetings():
+    array = ["Nice to see you again!", 
+             "Hello again!", 
+             "Hello! How are you?",
+             "Hi there... how are you today?", 
+             "Hello, how are you feeling today?",
+             "Hello... I'm glad you could drop by today."]
+    
+    max_len = len(array)
+    index = randint(0, max_len-1)
+    return array[index]
 
 def repeating():
 	#repeat pattern
@@ -25,9 +33,15 @@ def basic_questions():
 	#common questions
 	return ""
 
-def feeling():
-	#feeling
-	return ""
+def feelings(feeling):
+    array = ["Do you often feel "+feeling+"?", 
+             "When do you usually feel "+feeling+"?",
+             "When you feel "+feeling+", what do you do?", 
+             "Tell me more about it."]
+    
+    max_len = len(array)
+    index = randint(0, max_len-1)
+    return array[index]
 
 def conversation():
 	#the rest
@@ -109,11 +123,6 @@ psychobabble = [
      ["There are many times when no apology is needed.",
       "What feelings do you have when you apologize?"]],
 
-    [r'Hello(.*)',
-     ["Hello... I'm glad you could drop by today.",
-      "Hi there... how are you today?",
-      "Hello, how are you feeling today?"]],
-
     [r'I think (.*)',
      ["Do you doubt {0}?",
       "Do you really think so?",
@@ -169,12 +178,6 @@ psychobabble = [
      ["Don't you really {0}?",
       "Why don't you {0}?",
       "Do you want to {0}?"]],
-
-    [r'I feel (.*)',
-     ["Good, tell me more about these feelings.",
-      "Do you often feel {0}?",
-      "When do you usually feel {0}?",
-      "When you feel {0}, what do you do?"]],
 
     [r'I have (.*)',
      ["Why do you tell me that you've {0}?",
@@ -289,3 +292,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
