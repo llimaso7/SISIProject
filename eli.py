@@ -48,7 +48,7 @@ no_response=["Please tell me something...",
             "Nothing? Please say something to me",
             "I'm waiting for you"]
 
-feelings = ["Do you often feel{}?",
+feelings = ["Do you often feel {0}?",
              "When do you usually feel {0}?",
              "When you feel {0}, what do you do?",
              "Tell me more about it."]
@@ -81,18 +81,6 @@ child = ["Did you have close friends as a child?",
          "Do you remember any dreams or nightmares from childhood?",
          "Did the other children sometimes tease you?",
          "How do you think your childhood experiences relate to your feelings today?"]
-
-everything = ["Please tell me more.",
-	      "I am not sure I understand you"
-              "Let's change focus a bit... Tell me about your family.",
-		      "Can you elaborate on that?",
-		      "Why do you say that {0}?",
-		      "I see.",
-		      "Very interesting.",
-		      "{0}.",
-		      "I see.  And what does that tell you?",
-		      "How does that make you feel?",
-		      "How do you feel when you say that?"]
 
 question = ["Why do you ask that?",
             "Please consider whether you can answer your own question.",
@@ -195,7 +183,6 @@ data[r'Hello(.*)'] = greetings
 data[r'(.*) father(.*)'] =father
 data[r'(.*) mother(.*)'] = mother
 data[r'(.*) child(.*)'] = child
-data[r'(.*)'] = everything
 data[r'(.*)\?'] = question
 data[r'I need (.*)'] = need
 data[r'Why can\'?t I ([^\?]*)\??'] = whyCan
@@ -237,22 +224,22 @@ def main():
     print "Press Ctrl C/ type stop/cancel/quit to get out of the conversation"
     print "Have fun"
     print "============================================================"
-    print random.choice(greetings) 
+    print random.choice(greetings)
     last_sentence=""
     while True:
-	statement = raw_input("> ")
-	if not statement:
-		print (random.choice(no_response))
-	else:	
-		if last_sentence == statement:
-	 		print random.choice(repeating)
-			last_sentence = statement
-			continue
-		last_sentence= statement
-		if statement in quits:
-			print random.choice(quit)
-			break
-		print analyze(statement)
+        statement = raw_input("> ")
+        if not statement:
+            print random.choice(no_response)
+        else:	
+            if last_sentence == statement:
+                print (random.choice(repeating))
+                last_sentence = statement
+                continue
+            last_sentence= statement
+            if statement in quits:
+                print (random.choice(quit))
+                break
+            print analyze(statement)
 
 if __name__ == "__main__":
     main()
