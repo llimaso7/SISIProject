@@ -4,7 +4,6 @@ Garcia Exposito, Antoni Lluis
 Negro Carpintero, Raul
 Sardon Ibanez, Yeray
 Cao, Thi Huyen
-
 Version de Python 2,7 o superior
 """
 import re
@@ -46,6 +45,14 @@ no_response=["Please tell me something...",
             "At least, take sometime to enter something meaningful",
             "I'm listening",
             "Nothing? Please say something to me",
+            "I'm waiting for you"]
+
+no_response=["Please tell me something...",
+            "Tell me more...",
+            "Ok, continue, I'm still listening...",
+            "Hey, don't you want to talk to me?",
+            "At least, take sometime to enter something meaningful",
+            "I'm listening",
             "I'm waiting for you"]
 
 feelings = ["Do you often feel {0}?",
@@ -203,6 +210,7 @@ data[r'I have (.*)'] = iHave
 data[r'I would (.*)'] = iWould
 data[r'I want (.*)'] = iWant
 data[r'quit'] = quit
+data[r'.*']=no_response
 
 def reflect(fragment):
     tokens = fragment.lower().split()
@@ -219,17 +227,12 @@ def analyze(statement):
 			return response.format(*[reflect(g) for g in match.groups()])
 
 def main():
-    print "============================================================"
-    print "Welcome to our eliza chatbot"
-    print "Press Ctrl C/ type stop/cancel/quit to get out of the conversation"
-    print "Have fun"
-    print "============================================================"
-    print random.choice(greetings)
+    print (random.choice(greetings))
     last_sentence=""
     while True:
-        statement = raw_input("> ")
+        statement = input("> ")
         if not statement:
-            print random.choice(no_response)
+            print (random.choice(no_response))
         else:	
             if last_sentence == statement:
                 print (random.choice(repeating))
@@ -239,7 +242,7 @@ def main():
             if statement in quits:
                 print (random.choice(quit))
                 break
-            print analyze(statement)
+            print (analyze(statement))
 
 if __name__ == "__main__":
     main()
