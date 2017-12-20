@@ -1,7 +1,0 @@
-1. A document/a short overview about what is eliza (see more https://en.wikipedia.org/wiki/ELIZA)
-2. Implement logic (see more https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
-I personally think it's better to have a small data base for the data.
-We can also embedden it in the implementation of eliza as above
-    2.1 A data base 
-    2.2 An algorithm to represent the chat bot
-3. An small GUI for user to interact (see more http://www.masswerk.at/elizabot/)
